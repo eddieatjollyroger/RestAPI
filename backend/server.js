@@ -5,11 +5,20 @@ var fs = require('fs');
 app.post('/properties', function(req, res){
     fs.readFile(__dirname + "/" + "properties.json", 'utf8', function(err, data){
         data = JSON.parse(data);
-        data["user5"] = user["user5"];
         console.log(data);
         res.end(JSON.stringify(data));
     });
 })
+
+app.delete('/properties', function (req, res) {
+    fs.readFile( __dirname + "/" + "properties.json", 'utf8', function (err, data) {
+       data = JSON.parse( data );
+       delete data[propertyName];
+       console.log( data );
+       res.end( JSON.stringify(data));
+    });
+ })
+
 
 app.get('/properties', function(req, res){
     fs.readFile(__dirname + "/" + "properties.json", 'utf8', function(err, data){
