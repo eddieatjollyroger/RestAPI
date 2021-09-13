@@ -1,0 +1,10 @@
+{
+    "properties": [
+    {
+    "name":"Yellow apartment",
+     "units":["kitchen","bathroom","bedroom"]
+    }, {
+    "name":"Red apartment",
+    "units":["kitchen","bathroom","bedroom","bedroom","living-room"] }
+    ] 
+}
