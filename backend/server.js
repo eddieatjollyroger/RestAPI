@@ -1,36 +1,18 @@
-var express = require('express'); 
-var app = express();
-var fs = require('fs');
+import express from "express";
+import bodyParser from "body-parser";
 
-app.post('/properties', function(req, res){
-    fs.readFile(__dirname + "/" + "properties.json", 'utf8', function(err, data){
-        data = JSON.parse(data);
-        console.log(data);
-        res.end(JSON.stringify(data));
-    });
-})
+import propertyRoutes from "./routes/propertyRouter.js";
 
-app.delete('/properties', function (req, res) {
-    fs.readFile( __dirname + "/" + "properties.json", 'utf8', function (err, data) {
-       data = JSON.parse( data );
-       delete data[propertyName];
-       console.log( data );
-       res.end( JSON.stringify(data));
-    });
- })
+const app = express();
+const PORT = 5000;
 
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+app.use(bodyParser.json());
 
-app.get('/properties', function(req, res){
-    fs.readFile(__dirname + "/" + "properties.json", 'utf8', function(err, data){
-        console.log(data);
-        res.end(data); 
-    });
-})
+app.use('/properties', propertyRoutes);
 
+app.get("/", (req, res) => res.send("Welcome to the properties API!"));
 
-
-var server = app.listen(8080, function(){
-    var host = server.address().address
-    var port = server.address().port
-    console.log("small REST API listening at http://%s:%s", host, port)
-})
+app.listen(PORT, () =>console.log(`Server running on port: http://localhost:${PORT}`));
