@@ -18,7 +18,9 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     console.log(json.properties);
     var properties = [];
-    properties.push(json.properties);
+    for(var i = 0; i < json.properties.length; i++){
+    properties.push(json.properties[i]);
+}
     properties.push(req.body);
     json.properties = properties;
     res.send(json);
