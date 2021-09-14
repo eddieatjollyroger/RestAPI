@@ -26,4 +26,13 @@ router.post("/", (req, res) => {
     res.send(json);
 })
 
+router.delete("/", (req, res) => {
+    for(var i = 0; i < json.properties.length; i++){
+    if (json.properties[i].name == req.body.name){
+        delete json.properties[i];
+    }
+    }
+    res.send(json);
+})
+
 export default router;
