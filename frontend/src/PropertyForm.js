@@ -33,7 +33,6 @@ export default class PropertyForm extends Component {
     this.setState({unit0: event.target.value});
   }
   handleChangeUnit1(event) {
-    console.log(event.target.value)
     this.setState({unit1: event.target.value});
   }
   handleChangeUnit2(event) {
