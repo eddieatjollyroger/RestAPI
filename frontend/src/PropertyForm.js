@@ -17,6 +17,11 @@ export default class PropertyForm extends Component {
     unit3: ""};
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeUnit0 = this.handleChangeUnit0.bind(this);
+    this.handleChangeUnit1 = this.handleChangeUnit1.bind(this);
+    this.handleChangeUnit2 = this.handleChangeUnit2.bind(this);
+    this.handleChangeUnit3 = this.handleChangeUnit3.bind(this);
+    this.handleChangeUnit4 = this.handleChangeUnit4.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,15 +29,49 @@ export default class PropertyForm extends Component {
     this.setState({value: event.target.value});
   }
 
+  handleChangeUnit0(event) {
+    this.setState({unit0: event.target.value});
+  }
+  handleChangeUnit1(event) {
+    console.log(event.target.value)
+    this.setState({unit1: event.target.value});
+  }
+  handleChangeUnit2(event) {
+    this.setState({unit2: event.target.value});
+  }
+  handleChangeUnit3(event) {
+    this.setState({unit3: event.target.value});
+  }
+  handleChangeUnit4(event) {
+    this.setState({unit4: event.target.value});
+  }
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value + " click the button to get refreshed list");
-    if (!this.state.value){
+     if (!this.state.value){
       return;
     }
     else{
+      alert('A name was submitted: ' + this.state.value + " click the button to get refreshed list");
+   
       this.formObject.name = this.state.value
-      this.handleButtonClickPost(this.formObject)
     }
+    if (this.state.unit0 != null){
+console.log("helo")
+      this.formObject.units.push(this.state.unit0)
+    }
+    if (this.state.unit1){
+      this.formObject.units.push(this.state.unit1)
+    }
+    if (this.state.unit2){
+      this.formObject.units.push(this.state.unit2)
+    }
+    if (this.state.unit3){
+      this.formObject.units.push(this.state.unit3)
+    }
+    if (this.state.unit4){
+      this.formObject.units.push(this.state.unit4)
+    }
+    
+    this.handleButtonClickPost(this.formObject)
     event.preventDefault();
   }
 
@@ -47,29 +86,39 @@ render(){
   return (
     <div>
 <form onSubmit={this.handleSubmit}>
+          <h5>Insert a new property!</h5>
             <label>
           Property Name:
           <input type="text" value={this.state.value} onChange={this.handleChange}/>
         </label>
+        <br></br>
         <label>
           Property Unit:
-          <input type="text" value={this.formObject.unit0}/>
+          <input type="text" value={this.state.unit0} onChange={this.handleChangeUnit0}/>
         </label>
+        <br></br>
         <label>
           Property Unit:
-          <input type="text" value={this.formObject.unit1}/>
+          <input type="text" value={this.state.unit1} onChange={this.handleChangeUnit1}/>
         </label>
+        <br></br>
         <label>
           Property Unit:
-          <input type="text" value={this.formObject.unit2}/>
+          <input type="text" value={this.state.unit2} onChange={this.handleChangeUnit2}/>
         </label>
+        <br></br>
         <label>
           Property Unit:
-          <input type="text" value={this.formObject.unit3}/>
+          <input type="text" value={this.state.unit3} onChange={this.handleChangeUnit3}/>
         </label>
+        <br></br>
+        <label>
+          Property Unit:
+          <input type="text" value={this.state.unit4} onChange={this.handleChangeUnit4}/>
+        </label>
+        <br></br>
         <input type="submit" value="Submit" />
       </form>
-      <button onClick={this.handleButtonClickPost}>Click me to add a property</button>
       </div>
 )}
 }
