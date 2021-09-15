@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import Properties from './Properties';
 
 export default class PropertyForm extends Component {
     constructor() {
@@ -48,12 +47,12 @@ export default class PropertyForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
      if (!this.state.value || !this.state.unit0){
-      alert('Property: ' + this.state.unit0 + " was added, click the button to get refreshed list");
+      alert("Every property needs at least 1 unit!");
       return;
     }
     else{
       
-      alert('Property: ' + this.state.unit0 + " was added, click the button to get refreshed list");
+      alert('Property: ' + this.state.value + " was added, click the button to get the updated list");
    
       this.formObject.name = this.state.value
       this.setState({value: ""})
@@ -80,6 +79,7 @@ export default class PropertyForm extends Component {
     }
     
     this.handleButtonClickPost(this.formObject)
+
     //event.preventDefault();
   }
 }
@@ -87,7 +87,7 @@ export default class PropertyForm extends Component {
     
     handleButtonClickPost = (object) => {
         axios.post("/properties", object).then(response => {
-            console.log(response.data.properties);
+            console.log("post" + response.data);
         })
     };
 
