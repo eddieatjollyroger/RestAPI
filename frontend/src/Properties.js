@@ -26,7 +26,7 @@ export default class Properties extends Component {
         var objectDel = {name: propName}
         console.log("objectDel" + objectDel)
         axios.delete("/properties", {data: objectDel}).then()
-        alert("A name was submitted: click the button to get refreshed list");
+        alert("A property was deleted: click the button to get refreshed list");
 
     };
 

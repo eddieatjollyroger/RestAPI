@@ -9,12 +9,12 @@ export default class PropertyForm extends Component {
       name: "",
       units:[]
   }
-  this.state = {
-    value: '',
-    unit0: "",
-    unit1: "",
-    unit2: "",
-    unit3: ""};
+    this.state = {
+      value: '',
+      unit0: '',
+      unit1: '',
+      unit2: '',
+      unit3: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeUnit0 = this.handleChangeUnit0.bind(this);
@@ -44,42 +44,45 @@ export default class PropertyForm extends Component {
   handleChangeUnit4(event) {
     this.setState({unit4: event.target.value});
   }
+  
   handleSubmit(event) {
     event.preventDefault();
-     if (!this.state.value){
+     if (!this.state.value || !this.state.unit0){
+      alert('Property: ' + this.state.unit0 + " was added, click the button to get refreshed list");
       return;
     }
     else{
-      alert('Property: ' + this.state.value + " was added, click the button to get refreshed list");
+      
+      alert('Property: ' + this.state.unit0 + " was added, click the button to get refreshed list");
    
       this.formObject.name = this.state.value
       this.setState({value: ""})
-    }
-    if (this.state.unit0 != null){
+    
       this.formObject.units = [];
       this.formObject.units.push(this.state.unit0)
-      this.setState({unit0: ""})
-    }
+      this.setState({unit0: ''})
+    
     if (this.state.unit1){
       this.formObject.units.push(this.state.unit1)
-      this.setState({unit1: ""})
+      this.setState({unit1: ''})
     }
     if (this.state.unit2){
       this.formObject.units.push(this.state.unit2)
-      this.setState({unit2: ""})
+      this.setState({unit2: ''})
     }
     if (this.state.unit3){
       this.formObject.units.push(this.state.unit3)
-      this.setState({unit3: ""})
+      this.setState({unit3: ''})
     }
     if (this.state.unit4){
       this.formObject.units.push(this.state.unit4)
-      this.setState({unit4: ""})
+      this.setState({unit4: ''})
     }
     
     this.handleButtonClickPost(this.formObject)
     //event.preventDefault();
   }
+}
 
     
     handleButtonClickPost = (object) => {
