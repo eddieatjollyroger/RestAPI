@@ -54,7 +54,7 @@ export default class PropertyForm extends Component {
       this.formObject.name = this.state.value
     }
     if (this.state.unit0 != null){
-console.log("helo")
+      this.formObject.units = [];
       this.formObject.units.push(this.state.unit0)
     }
     if (this.state.unit1){

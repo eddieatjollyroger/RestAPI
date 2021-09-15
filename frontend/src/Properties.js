@@ -13,7 +13,7 @@ export default class Properties extends Component {
     
     handleButtonClickGet = () => {
         axios.get("/properties").then(response => {
-            //console.log(response.data.properties);
+            //console.log("oi" + response.data.properties);
         this.setState({
             properties: response.data.properties
         })
@@ -22,9 +22,15 @@ export default class Properties extends Component {
         );
     };
 
+    handleDelete = (propName) =>{
+        var objectDel = {name: propName}
+        console.log("objectDel" + objectDel)
+        axios.delete("/properties", {data: objectDel}).then(
+            
+        )};
+
     formatUnits = (arr) => {
         arr = arr.join(', ')
-        console.log(arr)
         return arr;
     }
     
@@ -34,7 +40,10 @@ export default class Properties extends Component {
             <div>
             <button onClick={this.handleButtonClickGet}>Click me to get the properties</button>
             <h1>Properties:</h1> 
-            {properties.map(property => <div> <br></br>{"Property Name: " +property.name}<div>{"Units: " +this.formatUnits(property.units)}</div></div>)}
+            {properties.map(property => <div> <br></br>{"Property Name: " +property.name}
+            {/* <button onClick={this.handleButtonClickDelete(property.name)}>Click me to to delete</button> */}
+            <button onClick={() => this.handleDelete(property.name)}>Delete</button>
+            <div>{"Units: " +this.formatUnits(property.units)}</div></div>)}
             </div>
         )
     }
