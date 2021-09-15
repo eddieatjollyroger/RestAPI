@@ -19,12 +19,6 @@ export default class Properties extends Component {
         }
         );
     };
-    
-    handleButtonClickPost = () => {
-        axios.post("/properties").then(response => {
-            console.log(response.data.properties);
-        })
-    };
 
     render() {
         const {properties} = this.state;
@@ -34,7 +28,6 @@ export default class Properties extends Component {
             <h1>Properties:</h1> 
             {properties.map(property => <div> {property.name}</div>)}
             <br></br>
-            <button onClick={this.handleButtonClickPost}>Click me to add a property</button>
             </div>
         )
     }
