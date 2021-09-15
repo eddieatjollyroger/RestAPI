@@ -5,21 +5,36 @@ export default class Properties extends Component {
     constructor(){
         super();
         this.state = {
-            properties: "no properties gotten yet"
+            properties: [{name: "no properties gotten yet, hit the button!"}]
         }
     }
     
-    componentDidMount = () => {
+    handleButtonClickGet = () => {
         axios.get("/properties").then(response => {
-            console.log(response);
-        });
+            //console.log(response.data.properties);
+        this.setState({
+            properties: response.data.properties
+        })
+        //console.log(this.state.properties)
+        }
+        );
+    };
+    
+    handleButtonClickPost = () => {
+        axios.post("/properties").then(response => {
+            console.log(response.data.properties);
+        })
     };
 
     render() {
+        const {properties} = this.state;
         return (
             <div>
-            <button>Click me to refresh properties</button>
-            <h3>Properties {this.state.properties}</h3>
+            <button onClick={this.handleButtonClickGet}>Click me to get the properties</button>
+            <h1>Properties:</h1> 
+            {properties.map(property => <div> {property.name}</div>)}
+            <br></br>
+            <button onClick={this.handleButtonClickPost}>Click me to add a property</button>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 
 import './App.css';
 import Properties from  "./Properties";
+import PropertyForm from './PropertyForm';
 
 function App() {
   return (
@@ -9,6 +10,9 @@ function App() {
         <Properties>
 
         </Properties>
+        <PropertyForm>
+          
+        </PropertyForm>
       </header>
     </div>
   );
