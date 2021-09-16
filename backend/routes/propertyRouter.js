@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
 
 router.get("/:number", (req, res) => {
   const { number } = req.params
-  console.log(number)
 
   var newJson = []
   var counter = 0;
