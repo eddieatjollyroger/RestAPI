@@ -14,7 +14,29 @@ router.get("/", (req, res) => {
      res.send(json);
 })
 
+router.get("/bedroom=2", (req, res) => {
 
+  var txt = req.url;
+  var numb = txt.match(/\d/g);
+  numb = numb.join("");
+ 
+  var newJson = []
+  var counter = 0;
+
+  for (let i = 0; i < json.properties.length; i++) {
+  for (let j = 0; j < json.properties[i].units.length; j++) {
+
+    if (json.properties[i].units[j] == "bedroom"){
+        counter++;
+    }
+  }
+  if (counter == numb){
+    newJson.push(json.properties[i])
+  }
+}
+counter = 0;
+res.send(newJson);
+})
 
 router.post("/", (req, res) => {
   console.log("post")
