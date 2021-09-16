@@ -14,12 +14,10 @@ router.get("/", (req, res) => {
      res.send(json);
 })
 
-router.get("/bedroom=2", (req, res) => {
+router.get("/:number", (req, res) => {
+  const { number } = req.params
+  console.log(number)
 
-  var txt = req.url;
-  var numb = txt.match(/\d/g);
-  numb = numb.join("");
- 
   var newJson = []
   var counter = 0;
 
@@ -30,7 +28,7 @@ router.get("/bedroom=2", (req, res) => {
         counter++;
     }
   }
-  if (counter == numb){
+  if (counter == number){
     newJson.push(json.properties[i])
   }
 }
