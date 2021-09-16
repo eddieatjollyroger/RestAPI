@@ -19,7 +19,6 @@ router.get("/:number", (req, res) => {
 
   var newJson = []
   var counter = 0;
-
   for (let i = 0; i < json.properties.length; i++) {
   for (let j = 0; j < json.properties[i].units.length; j++) {
 
