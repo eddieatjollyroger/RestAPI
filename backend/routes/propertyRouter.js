@@ -30,8 +30,9 @@ router.get("/:number", (req, res) => {
   if (counter == number){
     newJson.push(json.properties[i])
   }
+  counter = 0;
 }
-counter = 0;
+
 res.send(newJson);
 })
 
